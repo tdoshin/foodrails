@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+100.times do
+    Foodmodel.create(
+      name: Faker::Games::Pokemon.name,
+      image: "https://via.placeholder.com/150",
+      recipe: Faker::TvShows::TwinPeaks.quote,
+    )
+  end
+  
+  puts "Seeded database"
