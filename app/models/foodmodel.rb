@@ -1,2 +1,3 @@
 class Foodmodel < ApplicationRecord
+  belongs_to :user
 end

@@ -6,12 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-100.times do
-    Foodmodel.create(
-      name: Faker::Games::Pokemon.name,
-      image: "https://via.placeholder.com/150",
-      recipe: Faker::TvShows::TwinPeaks.quote,
-    )
-  end
-  
-  puts "Seeded database"
+User.create([
+  {username: "donald", password: "don", age: "28"}
+])
+
+user_id = User.find_by(username: "donald").id
+
+Foodmodel.create([
+  {name: "jollof", user_id: user_id},
+  {name: "pasta", user_id: user_id},
+  {name: "casserole", user_id: user_id},
+])

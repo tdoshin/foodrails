@@ -1,9 +1,11 @@
 class FoodmodelsController < ApplicationController
+  before_action :authorized
   before_action :set_foodmodel, only: [:show, :update, :destroy]
 
   # GET /foodmodels
   def index
-    @foodmodels = Foodmodel.all
+    # @foodmodels = Foodmodel.all
+    @foodmodels = Foodmodel.where(user_id: @user.id)
 
     render json: @foodmodels
   end
@@ -16,6 +18,7 @@ class FoodmodelsController < ApplicationController
   # POST /foodmodels
   def create
     @foodmodel = Foodmodel.new(foodmodel_params)
+    @foodmodel.user_id = @user.id
 
     if @foodmodel.save
       # render json: @foodmodel, status: :created, location: @foodmodel
