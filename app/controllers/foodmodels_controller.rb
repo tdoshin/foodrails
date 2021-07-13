@@ -2,6 +2,13 @@ class FoodmodelsController < ApplicationController
   before_action :authorized
   before_action :set_foodmodel, only: [:show, :update, :destroy]
 
+  # GET /foodmodelsall
+  def index_all
+    @foodmodels = Foodmodel.all
+
+    render json: @foodmodels
+  end
+  
   # GET /foodmodels
   def index
     # @foodmodels = Foodmodel.all
